@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidesktop.AjoutevenementController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="id_destination" layoutX="194.0" layoutY="157.0" onKeyReleased="#testdestination" prefHeight="45.0" prefWidth="240.0" />
+            <TextField fx:id="id_nbr_participants_max" layoutX="629.0" layoutY="158.0" onKeyReleased="#testnbrparticipants" prefHeight="45.0" prefWidth="240.0" />
+            <TextField fx:id="id_prix" layoutX="194.0" layoutY="242.0" onKeyReleased="#testprix" prefHeight="45.0" prefWidth="240.0" />
+            <TextField fx:id="id_description" layoutX="195.0" layoutY="337.0" onKeyReleased="#testdescription" prefHeight="271.0" prefWidth="239.0" />
+            <ImageView fx:id="img" fitHeight="189.0" fitWidth="251.0" layoutX="624.0" layoutY="350.0" onDragDropped="#dropimg" onDragOver="#dragover" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="98.0" layoutY="167.0" prefHeight="28.0" prefWidth="141.0" text="Destination :" />
+            <Label layoutX="502.0" layoutY="172.0" prefHeight="17.0" prefWidth="135.0" text="Nombre participants :" />
+            <Label layoutX="97.0" layoutY="256.0" text="Prix :" />
+            <Label layoutX="110.0" layoutY="390.0" text="Description :" />
+            <Label layoutX="578.0" layoutY="373.0" text="Image :" />
+            <Button fx:id="insert" layoutX="769.0" layoutY="547.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="53.0" prefWidth="109.0" text="Ajouter" />
+            <DatePicker fx:id="id_date" layoutX="630.0" layoutY="242.0" onKeyReleased="#testdate" prefHeight="45.0" prefWidth="239.0" />
+            <Label layoutX="585.0" layoutY="256.0" prefHeight="17.0" prefWidth="135.0" text="Date :" />
+            <Button fx:id="id_retour" layoutX="630.0" layoutY="547.0" mnemonicParsing="false" onAction="#retour" prefHeight="53.0" prefWidth="109.0" text="Retour" />
+            <ImageView fx:id="destinationCM" fitHeight="21.0" fitWidth="21.0" layoutX="441.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="prixCM" fitHeight="21.0" fitWidth="21.0" layoutX="441.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="descriptionCM" fitHeight="21.0" fitWidth="21.0" layoutX="452.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="nbrparticipantsCM" fitHeight="21.0" fitWidth="21.0" layoutX="875.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="dateCM" fitHeight="21.0" fitWidth="21.0" layoutX="875.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="erreur_destination" layoutX="195.0" layoutY="203.0" prefHeight="17.0" prefWidth="239.0" />
+            <Label fx:id="erreur_prix" layoutX="195.0" layoutY="287.0" prefHeight="17.0" prefWidth="239.0" />
+            <Label fx:id="erreur_description" layoutX="195.0" layoutY="608.0" prefHeight="17.0" prefWidth="239.0" />
+            <Label fx:id="erreur_nbrparticipants" layoutX="630.0" layoutY="203.0" prefHeight="17.0" prefWidth="239.0" />
+            <Label fx:id="erreur_date" layoutX="630.0" layoutY="287.0" prefHeight="17.0" prefWidth="239.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

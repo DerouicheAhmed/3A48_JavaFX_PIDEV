@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidesktop.AfficherParticipantController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="969.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="id_list" layoutX="275.0" layoutY="98.0" onMouseClicked="#fill" prefHeight="213.0" prefWidth="643.0" />
+            <Button fx:id="id_supprimer" layoutX="275.0" layoutY="338.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="52.0" prefWidth="99.0" text="Supprimer" />
+            <Button fx:id="id_modifier" layoutX="551.0" layoutY="338.0" mnemonicParsing="false" onAction="#modifier" prefHeight="52.0" prefWidth="99.0" text="Modifier" />
+            <Button fx:id="id_Ajouter" layoutX="817.0" layoutY="332.0" mnemonicParsing="false" onAction="#goAjout" prefHeight="52.0" prefWidth="99.0" text="Ajouter" />
+            <TextField fx:id="id_nom" layoutX="336.0" layoutY="521.0" prefHeight="33.0" prefWidth="150.0" />
+            <TextField fx:id="id_prenom" layoutX="336.0" layoutY="604.0" prefHeight="33.0" prefWidth="150.0" />
+            <TextField fx:id="id_evenement" layoutX="766.0" layoutY="604.0" prefHeight="33.0" prefWidth="150.0" />
+            <TextField fx:id="id_num" layoutX="766.0" layoutY="521.0" prefHeight="33.0" prefWidth="150.0" />
+            <Label layoutX="286.0" layoutY="525.0" text="Nom:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="266.0" layoutY="604.0" text="Prénom:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="600.0" layoutY="525.0" text="Numero de téléphone:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="680.0" layoutY="608.0" text="Evenement:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="id_button_evenement" layoutX="21.0" layoutY="22.0" mnemonicParsing="false" onAction="#GoToEvenement" prefHeight="52.0" prefWidth="99.0" text="Evenement" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

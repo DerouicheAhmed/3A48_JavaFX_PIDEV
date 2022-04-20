@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidesktop.AfficherevenementController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="id_list" layoutX="219.0" layoutY="93.0" onMouseClicked="#fill" prefHeight="247.0" prefWidth="691.0" />
+            <Button fx:id="Ajout" layoutX="694.0" layoutY="372.0" mnemonicParsing="false" onAction="#goajout" prefHeight="43.0" prefWidth="82.0" text="Ajouter" />
+            <Button fx:id="id_supprimer" layoutX="323.0" layoutY="372.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="43.0" prefWidth="82.0" text="Supprimer" />
+            <TextField fx:id="id_prix" layoutX="740.0" layoutY="526.0" prefHeight="38.0" prefWidth="170.0" />
+            <TextField fx:id="id_nbr_participants_max" layoutX="740.0" layoutY="446.0" prefHeight="38.0" prefWidth="170.0" />
+            <TextField fx:id="id_destination" layoutX="342.0" layoutY="446.0" prefHeight="38.0" prefWidth="170.0" />
+            <TextField fx:id="id_description" layoutX="342.0" layoutY="526.0" prefHeight="92.0" prefWidth="170.0" />
+            <Button fx:id="id_mod" layoutX="524.0" layoutY="372.0" mnemonicParsing="false" onAction="#modifier" prefHeight="43.0" prefWidth="82.0" text="Modifier" />
+            <Button fx:id="id_button_participant" layoutX="27.0" layoutY="24.0" mnemonicParsing="false" onAction="#GoToParticipant" prefHeight="43.0" prefWidth="82.0" text="Participant" />
+            <DatePicker fx:id="id_date" layoutX="740.0" layoutY="585.0" prefHeight="33.0" prefWidth="188.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
