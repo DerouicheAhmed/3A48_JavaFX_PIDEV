@@ -8,6 +8,7 @@ package pidesktop;
 import Alert.AlertDialog;
 import Entities.Evenement;
 import Entities.Participant;
+import Services.Evenement_service;
 import Services.Participant_service;
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +31,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import pidesktop.AfficherevenementController;
 
 /**
  * FXML Controller class
@@ -41,6 +43,9 @@ public class AjoutParticipantController implements Initializable {
     private boolean verificationUserPrenom;
     private boolean verificationUserPhone;
     private boolean verificationUserEvent;
+
+ 
+    public  int id_evenement_participant;
     @FXML
     private TextField id_evenement;
     @FXML
@@ -53,8 +58,6 @@ public class AjoutParticipantController implements Initializable {
     private Button insert;
     @FXML
     private Button id_retour;
-    @FXML
-    private ComboBox<Evenement> id_event;
     @FXML
     private ImageView eventCM;
     @FXML
@@ -77,22 +80,43 @@ public class AjoutParticipantController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        AfficherevenementController a= new AfficherevenementController();
+        System.out.println(AfficherevenementController.id_evenement_participant);
+        
+        id_evenement.setText(String.valueOf( AfficherevenementController.id_evenement_participant));
         
     }    
 
     @FXML
     private void ajouter(ActionEvent event) throws SQLException {
-        if ( verificationUserPhone && verificationUserPrenom && verificationUsernom && verificationUserEvent) {
+        if ( verificationUserPhone && verificationUserPrenom && verificationUsernom ) {
             
         
         Participant_service sp=new Participant_service(); 
+        Evenement_service  es=new Evenement_service();
         Participant u = new Participant();
         u.setNom(id_nom.getText());
         u.setPrenom(id_prenom.getText());
         u.setNumero_telephone(id_num.getText());
         u.setEvenements_id(Integer.parseInt(id_evenement.getText()));
         sp.Ajouter(u);
-        AlertDialog.showNotification("ajout","avec succees", AlertDialog.image_checked);
+        AlertDialog.showNotification("Ajout","le participant a été ajouter avec succés", AlertDialog.image_checked);
+        try {
+            
+                Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
+            
+            stageclose.close();
+                Parent root=FXMLLoader.load(getClass().getResource("AfficherParticipant.fxml"));
+            Stage stage =new Stage();
+            
+                Scene scene = new Scene(root);
+            
+            
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+                Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }
 
@@ -118,16 +142,16 @@ public class AjoutParticipantController implements Initializable {
 
     @FXML
     private void testevent(KeyEvent event) {
-       
-            if (isNumeric(id_evenement.getText())) {
-                erreur_event.setText("Id valide");
-                 eventCM.setImage(new Image("Images/checkMark.png"));
-                verificationUserEvent = true;
-            } else {             eventCM.setImage(new Image("Images/erreurcheckMark.png"));
-                erreur_event.setText("Id non valide");
-                verificationUserEvent = false;
-
-            }
+       verificationUserEvent = true;
+//            if (isNumeric(id_evenement.getText())) {
+//                erreur_event.setText("Id valide");
+//                 eventCM.setImage(new Image("Images/checkMark.png"));
+//                verificationUserEvent = true;
+//            } else {             eventCM.setImage(new Image("Images/erreurcheckMark.png"));
+//                erreur_event.setText("Id non valide");
+//                verificationUserEvent = false;
+//
+//            }
 
       
     }

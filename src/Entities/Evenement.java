@@ -12,6 +12,7 @@ import java.util.Date;
  *
  * @author mahdi
  */
+
 public class Evenement {
      private int id;
     private String description,image,destination;
@@ -146,7 +147,7 @@ public class Evenement {
     }
     @Override
     public String toString() {
-        return "Evenement{" + "id=" + id + ", destination=" + destination +  ", date=" + date + ", description=" + description + ", prix=" + prix + ", nombre de participants=" + nbr_participants + "/" + nbr_participants_max + ", users_id=" + users_id + '}';
+        return "Evenement: " + "ID=" + id + ", destination=" + destination +  ", date=" + date + ", description=" + description + ", prix=" + prix + ", nombre de participants=" + nbr_participants + "/" + nbr_participants_max + "UtilisateurID=" + users_id + '.';
     }
 
  

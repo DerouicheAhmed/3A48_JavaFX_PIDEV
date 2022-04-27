@@ -2,8 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -12,14 +15,43 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="969.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="id_list" layoutX="275.0" layoutY="98.0" onMouseClicked="#fill" prefHeight="213.0" prefWidth="643.0" />
-            <Button fx:id="id_supprimer" layoutX="275.0" layoutY="338.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="52.0" prefWidth="99.0" text="Supprimer" />
-            <Button fx:id="id_modifier" layoutX="551.0" layoutY="338.0" mnemonicParsing="false" onAction="#modifier" prefHeight="52.0" prefWidth="99.0" text="Modifier" />
-            <Button fx:id="id_Ajouter" layoutX="817.0" layoutY="332.0" mnemonicParsing="false" onAction="#goAjout" prefHeight="52.0" prefWidth="99.0" text="Ajouter" />
-            <TextField fx:id="id_nom" layoutX="336.0" layoutY="521.0" prefHeight="33.0" prefWidth="150.0" />
-            <TextField fx:id="id_prenom" layoutX="336.0" layoutY="604.0" prefHeight="33.0" prefWidth="150.0" />
-            <TextField fx:id="id_evenement" layoutX="766.0" layoutY="604.0" prefHeight="33.0" prefWidth="150.0" />
-            <TextField fx:id="id_num" layoutX="766.0" layoutY="521.0" prefHeight="33.0" prefWidth="150.0" />
+            <Button fx:id="id_supprimer" layoutX="263.0" layoutY="421.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="52.0" prefWidth="125.0" text="Supprimer">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/erreurcheckMark.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="id_modifier" layoutX="526.0" layoutY="421.0" mnemonicParsing="false" onAction="#modifier" prefHeight="52.0" prefWidth="125.0" text="Modifier">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/sign-sync-icon_34357.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="id_Ajouter" layoutX="783.0" layoutY="421.0" mnemonicParsing="false" onAction="#goAjout" prefHeight="52.0" prefWidth="127.0" text="Ajouter">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/sign-add-icon_34367.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <TextField fx:id="id_nom" layoutX="336.0" layoutY="521.0" onKeyReleased="#testnom" prefHeight="33.0" prefWidth="150.0" />
+            <TextField fx:id="id_prenom" layoutX="336.0" layoutY="604.0" onKeyReleased="#testprenom" prefHeight="33.0" prefWidth="150.0" />
+            <TextField fx:id="id_evenement" editable="false" layoutX="766.0" layoutY="604.0" onKeyReleased="#testevent" prefHeight="33.0" prefWidth="150.0" />
+            <TextField fx:id="id_num" layoutX="766.0" layoutY="521.0" onKeyReleased="#testnum" prefHeight="33.0" prefWidth="150.0" />
             <Label layoutX="286.0" layoutY="525.0" text="Nom:">
                <font>
                   <Font size="16.0" />
@@ -41,6 +73,22 @@
                </font>
             </Label>
             <Button fx:id="id_button_evenement" layoutX="21.0" layoutY="22.0" mnemonicParsing="false" onAction="#GoToEvenement" prefHeight="52.0" prefWidth="99.0" text="Evenement" />
+            <ImageView fx:id="nomCM" fitHeight="20.0" fitWidth="20.0" layoutX="490.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="prenomCM" fitHeight="20.0" fitWidth="20.0" layoutX="490.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="numCM" fitHeight="20.0" fitWidth="20.0" layoutX="925.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="eventCM" fitHeight="20.0" fitWidth="20.0" layoutX="925.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="erreur_nom" layoutX="336.0" layoutY="554.0" prefHeight="17.0" prefWidth="148.0" />
+            <Label fx:id="erreur_prenom" layoutX="337.0" layoutY="637.0" prefHeight="17.0" prefWidth="148.0" />
+            <Label fx:id="erreur_num" layoutX="767.0" layoutY="554.0" prefHeight="17.0" prefWidth="148.0" />
+            <Label fx:id="erreur_event" layoutX="767.0" layoutY="637.0" prefHeight="17.0" prefWidth="148.0" />
+            <TableView fx:id="id_listt" layoutX="263.0" layoutY="40.0" onMouseClicked="#fill_mod" prefHeight="358.0" prefWidth="647.0">
+              <columns>
+                <TableColumn fx:id="colId" prefWidth="75.0" text="ID:" />
+                <TableColumn fx:id="colNom" prefWidth="148.0" text="Nom:" />
+                  <TableColumn fx:id="colPrenom" prefWidth="189.0" text="Prénom:" />
+                  <TableColumn fx:id="colNum" prefWidth="194.0" text="Numero de téléphone:" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </center>

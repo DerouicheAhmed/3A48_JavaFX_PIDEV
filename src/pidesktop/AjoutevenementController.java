@@ -17,6 +17,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -36,7 +37,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
 
@@ -148,7 +151,7 @@ public class AjoutevenementController implements Initializable {
             u.setDate(datee);
             u.setImage(file_image); 
             sp.Ajouter(u);
-            AlertDialog.showNotification("ajout","avec succees", AlertDialog.image_checked);
+            AlertDialog.showNotification("Ajouter","L'evenement avec succees", AlertDialog.image_checked);
             }
     }
     public boolean isNumeric(String str){
@@ -257,8 +260,57 @@ public class AjoutevenementController implements Initializable {
             }
     }
 
-    @FXML
     private void testdate(KeyEvent event) {
+        
+        LocalDate now= LocalDate.now();
+        LocalDate date =id_date.getValue();
+        
+        if(date.isAfter(now)){
+            dateCM.setImage(new Image("Images/checkMark.png"));
+            erreur_date.setText("Date valide");
+            
+            verificationDate = true;
+        }else{
+            dateCM.setImage(new Image("Images/erreurcheckMark.png"));
+              erreur_date.setText("Date non valide");
+              verificationDate = false;
+        
+        }
+    }
+
+    private void testdate(InputMethodEvent event) {
+        LocalDate now= LocalDate.now();
+        LocalDate date =id_date.getValue();
+        
+        if(date.isAfter(now)){
+            dateCM.setImage(new Image("Images/checkMark.png"));
+            erreur_date.setText("Date valide");
+            
+            verificationDate = true;
+        }else{
+            dateCM.setImage(new Image("Images/erreurcheckMark.png"));
+              erreur_date.setText("Date non valide");
+              verificationDate = false;
+        
+        }
+    }
+
+    @FXML
+    private void testdate(MouseEvent event) {
+               LocalDate now= LocalDate.now();
+        LocalDate date =id_date.getValue();
+        
+        if(date.isAfter(now)){
+            dateCM.setImage(new Image("Images/checkMark.png"));
+            erreur_date.setText("Date valide");
+            
+            verificationDate = true;
+        }else{
+            dateCM.setImage(new Image("Images/erreurcheckMark.png"));
+              erreur_date.setText("Date non valide");
+              verificationDate = false;
+        
+        }
     }
     
 }

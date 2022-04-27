@@ -37,7 +37,7 @@ public class Evenement_service implements Iservices<Evenement> {
     @Override
     public void Ajouter(Evenement u) throws SQLException {
        PreparedStatement ps;
-        
+        u.setEtat(1);
    // private int id;
    // private String description,image,destination;
    // private Date date;
@@ -66,7 +66,7 @@ public class Evenement_service implements Iservices<Evenement> {
     public List<Evenement> Affichertout() throws SQLException {
     List<Evenement> list = new ArrayList();
     
-        String requete = "SELECT * FROM `evenement`";
+        String requete = "SELECT * FROM `evenement` WHERE etat=1";
         try {
             PreparedStatement ps = c.prepareStatement(requete);
             ResultSet rs = ps.executeQuery();
@@ -77,6 +77,7 @@ public class Evenement_service implements Iservices<Evenement> {
             r.setId(rs.getInt(1));
             r.setDestination(rs.getString(6));
             r.setDescription(rs.getString(3));
+            r.setNbr_participants(rs.getInt(8));
             r.setNbr_participants_max(rs.getInt(9));
             r.setPrix(rs.getInt(7));
             r.setDate(rs.getDate(5));
@@ -97,18 +98,15 @@ public class Evenement_service implements Iservices<Evenement> {
      public void Supprimer(Evenement p,int id) throws SQLException {
         PreparedStatement ps;
 
-        String query = "  DELETE FROM `evenement` WHERE `evenement`.`id` ='"+id+"'";;
+        String query = "  UPDATE `evenement` SET `etat`=0 WHERE `evenement`.`id` ='"+id+"'";
         
   
         try {
             ps = c.prepareStatement(query);
-
-//            ps.setInt(1,p.getEtat());
-            //ps.setInt(2,r.getId());
             ps.execute();
 
             System.out.println("suppression ");
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         } 
     }
@@ -144,9 +142,41 @@ public class Evenement_service implements Iservices<Evenement> {
             ps.execute();
    
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     
     }
+  public List<Evenement> Recherche(String destinationn) throws SQLException {
+
+        return Affichertout().stream().filter(a -> a.getDestination().equals(destinationn)).collect(Collectors.toList());
+
+    }
+  public long Recherche2() throws SQLException {
+
+  List<Evenement> p = Affichertout();
+        return p.stream().filter(b -> b.getNbr_participants_max()> 1).filter(b -> b.getNbr_participants_max() <= 10 ).count();
+    }
+     public long Recherche3() throws SQLException {
+
+  List<Evenement> p = Affichertout();
+        return p.stream().filter(b -> b.getNbr_participants_max() > 10).filter(b -> b.getNbr_participants_max()<= 50 ).count();
+    }
+      public long Recherche4() throws SQLException {
+
+  List<Evenement> p = Affichertout();
+        return p.stream().filter(b -> b.getNbr_participants_max()> 50).filter(b -> b.getNbr_participants_max()< 2000).count();
+    }
+  public void AjoutNbrParticipants(Evenement e)throws SQLException {
+      
+//        int nbr = e.getNbr_participants()+1;
+//          PreparedStatement ps;
+//
+//        String query = "UPDATE `evenement` SET `nbr_participants` = '"+nbr+"' WHERE `evenement`.`id` ="+e.getId();
+//            ps = c.prepareStatement(query);
+//            ps.execute();    
+    
+
+        
+  }
 }

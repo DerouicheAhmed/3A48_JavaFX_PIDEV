@@ -13,22 +13,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import pidesktop.AfficherevenementController;
+
 
 
 /**
  *
  * @author mahdi
  */
+
 public class Participant_service implements Iservices<Participant> {
+    AfficherevenementController a= new AfficherevenementController();
+       
+    public int id_evenement_participant;
     
     private Connection c = MyConnexion.getInsCon().getcnx();
     @Override
     public void Ajouter(Participant u) throws SQLException {
        PreparedStatement ps;
+       PreparedStatement pss;
         String query = "INSERT INTO `participant`( `evenements_id`,`nom`, `prenom`, `numero_telephone`) VALUES ('"+u.getEvenements_id()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getNumero_telephone()+"')";
+         String queryy = "UPDATE `evenement` SET `nbr_participants` = `nbr_participants`+1 WHERE `evenement`.`id` ='"+AfficherevenementController.id_evenement_participant+"'";
         try {
             ps = c.prepareStatement(query);
-            ps.execute();    
+            pss = c.prepareStatement(queryy);
+            ps.execute(); 
+            pss.execute();
             System.out.println(u);
          //AlertDialog.showNotification("ajout","avec succee", AlertDialog.image_checked);
         } catch (Exception e) { 
@@ -41,12 +51,17 @@ public class Participant_service implements Iservices<Participant> {
     
     @Override
     public List<Participant> Affichertout() throws SQLException {
+        
     List<Participant> list = new ArrayList();
+        System.out.println(AfficherevenementController.id_evenement_participant);
     
-        String requete = "SELECT * FROM `participant` ";
+        String requete = "SELECT * FROM `participant` WHERE `participant`.`evenements_id`='"+AfficherevenementController.id_evenement_participant+"'";
+       
         try {
             PreparedStatement ps = c.prepareStatement(requete);
+            
             ResultSet rs = ps.executeQuery();
+           
 
             while (rs.next()) {
                 Participant r = new Participant();
@@ -87,13 +102,13 @@ public class Participant_service implements Iservices<Participant> {
      @Override
   public void Modifier(Participant p, int id) {
        PreparedStatement ps;
-        String query = "UPDATE `participant` SET `evenements_id`=?,`nom`=?,`prenom`=?,`numero_telephone`=? WHERE `id`="+id;
+        String query = "UPDATE `participant` SET `nom`=?,`prenom`=?,`numero_telephone`=? WHERE `id`="+id;
         try {
             ps = c.prepareStatement(query);
-            ps.setInt(1, p.getEvenements_id());
-            ps.setString(2, p.getNom());
-            ps.setString(3, p.getPrenom());
-            ps.setString(4, p.getNumero_telephone());
+           
+            ps.setString(1, p.getNom());
+            ps.setString(2, p.getPrenom());
+            ps.setString(3, p.getNumero_telephone());
             ps.execute();
         } catch (Exception e) {
             System.out.println(e);
