@@ -13,9 +13,27 @@ import java.util.Objects;
  */
 public class Produit {
     private int id,quantite;
-    private String nom,designation;
+    private String nom,designation,cat,image;
     private float prix;
     private Categorie catégories_id;
+
+    public Produit(int id, int quantite, String nom, String designation, String cat, float prix, Categorie catégories_id) {
+        this.id = id;
+        this.quantite = quantite;
+        this.nom = nom;
+        this.designation = designation;
+        this.cat = cat;
+        this.prix = prix;
+        this.catégories_id = catégories_id;
+    }
+
+    public String getCat() {
+        return cat;
+    }
+
+    public void setCat(String cat) {
+        this.cat = cat;
+    }
 
     public Produit() {
     }
@@ -43,6 +61,20 @@ public class Produit {
         this.prix = prix;
         this.catégories_id = catégories_id;
     }
+
+    public Produit(int id, int quantite, String nom, String designation, String cat, String image, float prix, Categorie catégories_id) {
+        this.id = id;
+        this.quantite = quantite;
+        this.nom = nom;
+        this.designation = designation;
+        this.cat = cat;
+        this.image = image;
+        this.prix = prix;
+        this.catégories_id = catégories_id;
+    }
+
+   
+    
     
 
     public int getId() {
@@ -135,8 +167,23 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" + "quantite=" + quantite + ", nom=" + nom + ", designation=" + designation + ", prix=" + prix + '}';
+        return "Produit{" + "id=" + id + ", quantite=" + quantite + ", nom=" + nom + ", designation=" + designation + ", prix=" + prix + ", categories_id=" + catégories_id + '}';
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+//    @Override
+//    public int compareTo(Produit p) {
+//        return nom.compareTo(p.getNom());
+//    }
+
+    
     
     
     

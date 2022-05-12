@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="342.0" prefWidth="412.0" style="-fx-background-color: #42C2FF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pisprintjava.gui.ItemController">
+   <children>
+      <Label layoutX="38.0" layoutY="68.0" text="Nom Produit:" />
+      <Label layoutX="43.0" layoutY="126.0" text="Descirption:" />
+      <Label layoutX="-337.0" layoutY="-61.0" text="Label" />
+      <Label layoutX="48.0" layoutY="190.0" text="Catégorie:" />
+      <Label layoutX="54.0" layoutY="225.0" text="Prix:" />
+      <Label layoutX="52.0" layoutY="267.0" text="Quantité:" />
+      <Label layoutX="187.0" layoutY="68.0" />
+      <Label fx:id="Ldesc" layoutX="187.0" layoutY="126.0" text="Label" />
+      <Label fx:id="Lcat" layoutX="179.0" layoutY="190.0" text="Label" />
+      <Label fx:id="Lprix" layoutX="179.0" layoutY="225.0" text="Label" />
+      <Label fx:id="Lqte" layoutX="179.0" layoutY="267.0" text="Label" />
+      <Label fx:id="Lnom" layoutX="187.0" layoutY="68.0" text="Label" />
+   </children>
+</AnchorPane>

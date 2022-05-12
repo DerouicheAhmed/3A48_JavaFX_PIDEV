@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pisprintjava.gui.AjoutevenementController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="id_destination" layoutX="476.0" layoutY="285.0" onKeyReleased="#testdestination" prefHeight="45.0" prefWidth="240.0" />
+            <TextField fx:id="id_nbr_participants_max" layoutX="911.0" layoutY="286.0" onKeyReleased="#testnbrparticipants" prefHeight="45.0" prefWidth="240.0" />
+            <TextField fx:id="id_prix" layoutX="476.0" layoutY="370.0" onKeyReleased="#testprix" prefHeight="45.0" prefWidth="240.0" />
+            <TextField fx:id="id_description" layoutX="477.0" layoutY="465.0" onKeyReleased="#testdescription" prefHeight="271.0" prefWidth="239.0" />
+            <ImageView fx:id="img" fitHeight="189.0" fitWidth="251.0" layoutX="906.0" layoutY="478.0" onDragDropped="#dropimg" onDragOver="#dragover" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="380.0" layoutY="295.0" prefHeight="28.0" prefWidth="141.0" text="Destination :" />
+            <Label layoutX="784.0" layoutY="300.0" prefHeight="17.0" prefWidth="135.0" text="Nombre participants :" />
+            <Label layoutX="379.0" layoutY="384.0" text="Prix :" />
+            <Label layoutX="392.0" layoutY="518.0" text="Description :" />
+            <Label layoutX="860.0" layoutY="501.0" text="Image :" />
+            <Button fx:id="insert" layoutX="1051.0" layoutY="675.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="53.0" prefWidth="109.0" text="Ajouter">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/sign-add-icon_34367.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <DatePicker fx:id="id_date" layoutX="912.0" layoutY="370.0" onMouseClicked="#testdate" onMouseExited="#testdate" onMousePressed="#testdate" prefHeight="45.0" prefWidth="239.0" />
+            <Label layoutX="867.0" layoutY="384.0" prefHeight="17.0" prefWidth="135.0" text="Date :" />
+            <Button fx:id="id_retour" layoutX="912.0" layoutY="675.0" mnemonicParsing="false" onAction="#retour" prefHeight="53.0" prefWidth="109.0" text="Retour">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/sign-left-icon_34360.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <ImageView fx:id="destinationCM" fitHeight="21.0" fitWidth="21.0" layoutX="723.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="prixCM" fitHeight="21.0" fitWidth="21.0" layoutX="723.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="descriptionCM" fitHeight="21.0" fitWidth="21.0" layoutX="723.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="nbrparticipantsCM" fitHeight="21.0" fitWidth="21.0" layoutX="1157.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="dateCM" fitHeight="21.0" fitWidth="21.0" layoutX="1157.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="erreur_destination" layoutX="477.0" layoutY="331.0" prefHeight="17.0" prefWidth="239.0" />
+            <Label fx:id="erreur_prix" layoutX="477.0" layoutY="415.0" prefHeight="17.0" prefWidth="239.0" />
+            <Label fx:id="erreur_description" layoutX="477.0" layoutY="736.0" prefHeight="17.0" prefWidth="239.0" />
+            <Label fx:id="erreur_nbrparticipants" layoutX="912.0" layoutY="331.0" prefHeight="17.0" prefWidth="239.0" />
+            <Label fx:id="erreur_date" layoutX="912.0" layoutY="415.0" prefHeight="17.0" prefWidth="239.0" />
+            <VBox prefHeight="799.0" prefWidth="335.0" style="-fx-background-color: D1D0CA;" styleClass="right-bar" stylesheets="@../Value/style.css">
+               <children>
+                  <HBox fx:id="chosenhotelCard" alignment="CENTER" prefHeight="110.0" prefWidth="200.0" styleClass="shadow" stylesheets="@../Value/style.css">
+                     <children>
+                        <Label text="CAM" textFill="#edce0b">
+                           <font>
+                              <Font name="Cambria Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <Label text="PI" textFill="#faf9f3">
+                           <font>
+                              <Font name="Cambria Bold" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="310.0" styleClass="search-box" stylesheets="@../Value/style.css">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField prefHeight="50.0" prefWidth="180.0" promptText="Don't Worry we are here" styleClass="transparent" stylesheets="@../Value/style.css">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <BorderPane prefHeight="53.0" prefWidth="385.0" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="561.0" prefWidth="235.0" style="-fx-background-color: BAB7A4;" styleClass="chosen-fruit-card" stylesheets="@../Value/style.css">
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#GoAcceuil" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Acceuil">
+                           <VBox.margin>
+                              <Insets left="45.0" right="40.0" />
+                           </VBox.margin>
+                        </Button>
+                        <VBox prefHeight="80.0" prefWidth="265.0">
+                           <children>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#GoEvenement" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Evenenement">
+                                 <VBox.margin>
+                                    <Insets left="45.0" right="40.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#GoShop" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Shop">
+                                 <VBox.margin>
+                                    <Insets left="45.0" right="40.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#GoBlog" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Blog">
+                                 <VBox.margin>
+                                    <Insets left="45.0" right="40.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#GoDestination" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Destination">
+                                 <VBox.margin>
+                                    <Insets left="45.0" right="40.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#GoFacture" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Facture" translateY="20.0">
+                           <VBox.margin>
+                              <Insets left="45.0" right="40.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#GoCommande" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Commande">
+                           <VBox.margin>
+                              <Insets left="45.0" right="40.0" top="40.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#LogOut" prefHeight="31.0" prefWidth="177.0" styleClass="add-btn" stylesheets="@../Value/style.css" text="Deconnexion">
+                           <VBox.margin>
+                              <Insets left="45.0" right="40.0" top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Pane layoutX="332.0" prefHeight="64.0" prefWidth="868.0" style="-fx-background-color: BAB7A4;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf9f3" height="56.0" layoutX="286.0" layoutY="26.0" stroke="#0f2b4d" strokeType="OUTSIDE" strokeWidth="5.0" width="385.0" />
+                  <Label layoutX="315.0" layoutY="6.0" prefHeight="76.0" prefWidth="347.0" text="Ajouter Evenement" textFill="#edce0b">
+                     <font>
+                        <Font name="Harlow Solid Italic" size="41.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

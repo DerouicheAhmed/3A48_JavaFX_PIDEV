@@ -18,7 +18,8 @@ public class DataSource {
     private static DataSource instance;
     private final String USER ="root";
     private final String PWD ="";
-    private final String URL ="jdbc:mysql://localhost:3306/campi3";
+    private final String URL ="jdbc:mysql://localhost:3306/campi";
+    //3
 
     private  DataSource() {
         try {

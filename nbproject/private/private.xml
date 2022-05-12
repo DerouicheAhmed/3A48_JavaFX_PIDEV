@@ -2,6 +2,28 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/ContactController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/AjoutUserController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/BackuserController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/AjouterProduitController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/ResetpasswordController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/ConnexionController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/IServices/ServiceUser.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/AfficherCategorieController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/AfficherevenementBackController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/AfficherProduitController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/IServices/Iservices.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/ChangerpasswordController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/AjouterCategorieController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/utis/DataSource.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/ProfilController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/BackHomeUserController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/utis/MyConnexion.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/AfficherParticipantController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/ProfilFController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/BackhomeController.java</file>
+            <file>file:/C:/Users/mahdi/Documents/NetBeansProjects/PISprintJava/src/edu/pisprintjava/gui/AjoutevenementController.java</file>
+        </group>
     </open-files>
 </project-private>
