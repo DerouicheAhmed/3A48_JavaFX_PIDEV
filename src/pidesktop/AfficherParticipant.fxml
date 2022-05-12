@@ -89,6 +89,7 @@
                   <TableColumn fx:id="colNum" prefWidth="194.0" text="Numero de téléphone:" />
               </columns>
             </TableView>
+            <ImageView fx:id="qr" fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </center>

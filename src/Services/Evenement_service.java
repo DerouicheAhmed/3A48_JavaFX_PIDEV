@@ -92,7 +92,38 @@ public class Evenement_service implements Iservices<Evenement> {
         return list;
     
     }
+    /////back
+   
+    public List<Evenement> AffichertoutBack() throws SQLException {
+    List<Evenement> list = new ArrayList();
     
+        String requete = "SELECT * FROM `evenement` WHERE etat=0";
+        try {
+            PreparedStatement ps = c.prepareStatement(requete);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Evenement r = new Evenement();
+               // list.add(new Evenement(rs.getString("destination"),rs.getString("description"),rs.getString("image"),rs.getInt("nbr_participants"),rs.getInt("nbr_participants_max"),rs.getInt("prix"),rs.getInt("etat"),rs.getInt("users_id")));
+            r.setId(rs.getInt(1));
+            r.setDestination(rs.getString(6));
+            r.setDescription(rs.getString(3));
+            r.setNbr_participants(rs.getInt(8));
+            r.setNbr_participants_max(rs.getInt(9));
+            r.setPrix(rs.getInt(7));
+            r.setDate(rs.getDate(5));
+            
+            list.add(r);
+           // Evenement.add(r);
+           
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
+    
+    }
+    ///endback
     
     @Override
      public void Supprimer(Evenement p,int id) throws SQLException {
@@ -149,7 +180,8 @@ public class Evenement_service implements Iservices<Evenement> {
     }
   public List<Evenement> Recherche(String destinationn) throws SQLException {
 
-        return Affichertout().stream().filter(a -> a.getDestination().equals(destinationn)).collect(Collectors.toList());
+       // return Affichertout().stream().filter(a -> a.getDestination().equals(destinationn)).collect(Collectors.toList());
+        return Affichertout().stream().filter(a -> a.getDestination().contains(destinationn)).collect(Collectors.toList());
 
     }
   public long Recherche2() throws SQLException {
@@ -178,5 +210,17 @@ public class Evenement_service implements Iservices<Evenement> {
     
 
         
+  }
+  public void Valider(Evenement p) throws SQLException {
+      PreparedStatement ps;
+        String query = "UPDATE `evenement` SET `etat`=1 WHERE `evenement`.`id` ='"+p.getId()+"'";
+        try {
+            ps = c.prepareStatement(query);
+            ps.execute();    
+           
+
+        } catch (Exception e) { 
+            System.out.println(e);
+        }  
   }
 }

@@ -8,9 +8,13 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="PIdesktop.jar" size="29105" download="eager" />
+    <jar href="PIdesktop.jar" size="303395" download="eager" />
     <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.19.jar" size="2356711" download="eager" />
+    <jar href="lib\qrgen-1.0.jar" size="4932" download="eager" />
+    <jar href="lib\twilio-8.9.0-jar-with-dependencies.jar" size="8358946" download="eager" />
+    <jar href="lib\zxing-core-1.7.jar" size="352719" download="eager" />
+    <jar href="lib\zxing-j2se-1.7.jar" size="22051" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="PIdesktop" >
     <param name="requiredFXVersion" value="8.0+"/>

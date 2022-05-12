@@ -32,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import pidesktop.AfficherevenementController;
+import Utils.Smsapi;
 
 /**
  * FXML Controller class
@@ -100,19 +101,19 @@ public class AjoutParticipantController implements Initializable {
         u.setNumero_telephone(id_num.getText());
         u.setEvenements_id(Integer.parseInt(id_evenement.getText()));
         sp.Ajouter(u);
+            System.out.println(u.getNumero_telephone());
+            int tel= Integer.parseInt(u.getNumero_telephone());
+        //Smsapi.sendSMS("+216"+tel, "Bonjour "+u.getNom()+",\n" +"Merci d’avoir fait confiance a Campi." +"\n" +"Nous aimerions vous confirmer que votre inscription a l'evenement d'ID  "+u.getEvenements_id()+" a été validé." +"\n" +"Cordialement,\n" +"L’équipe de Campi.");
         AlertDialog.showNotification("Ajout","le participant a été ajouter avec succés", AlertDialog.image_checked);
         try {
             
-                Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
-            
+            Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
             stageclose.close();
-                Parent root=FXMLLoader.load(getClass().getResource("AfficherParticipant.fxml"));
+            Parent root=FXMLLoader.load(getClass().getResource("AfficherParticipant.fxml"));
             Stage stage =new Stage();
-            
-                Scene scene = new Scene(root);
-            
-            
+            Scene scene = new Scene(root); 
             stage.setScene(scene);
+            stage.setTitle("Participants");
             stage.show();
         } catch (IOException ex) {
                 Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
@@ -123,17 +124,13 @@ public class AjoutParticipantController implements Initializable {
     @FXML
     private void Retour(ActionEvent event) {
          try {
-            
-                Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
-            
+            Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
             stageclose.close();
-                Parent root=FXMLLoader.load(getClass().getResource("AfficherParticipant.fxml"));
+            Parent root=FXMLLoader.load(getClass().getResource("AfficherParticipant.fxml"));
             Stage stage =new Stage();
-            
-                Scene scene = new Scene(root);
-            
-            
+            Scene scene = new Scene(root);
             stage.setScene(scene);
+            stage.setTitle("Participants");
             stage.show();
         } catch (IOException ex) {
                 Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);

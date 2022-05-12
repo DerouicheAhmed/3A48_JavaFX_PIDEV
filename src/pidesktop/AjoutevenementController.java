@@ -152,6 +152,19 @@ public class AjoutevenementController implements Initializable {
             u.setImage(file_image); 
             sp.Ajouter(u);
             AlertDialog.showNotification("Ajouter","L'evenement avec succees", AlertDialog.image_checked);
+             try {
+            
+            Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
+            stageclose.close();
+            Parent root=FXMLLoader.load(getClass().getResource("afficherevenement.fxml"));
+            Stage stage =new Stage();
+            Scene scene = new Scene(root); 
+            stage.setScene(scene);
+            stage.setTitle("Evenement");
+            stage.show();
+        } catch (IOException ex) {
+                Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
+        }
             }
     }
     public boolean isNumeric(String str){
@@ -181,6 +194,7 @@ public class AjoutevenementController implements Initializable {
             
             
             stage.setScene(scene);
+            stage.setTitle("Evenement");
             stage.show();
         } catch (IOException ex) {
                 Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,7 +227,7 @@ public class AjoutevenementController implements Initializable {
 
     @FXML
     private void testnbrparticipants(KeyEvent event) {
-        if (isNumeric(id_nbr_participants_max.getText())) {
+        if ((isNumeric(id_nbr_participants_max.getText()))&& Integer.parseInt(id_nbr_participants_max.getText())>0) {
                 erreur_nbrparticipants.setText("Valide");
                  nbrparticipantsCM.setImage(new Image("Images/checkMark.png"));
                 verificationNbrparticipants = true;

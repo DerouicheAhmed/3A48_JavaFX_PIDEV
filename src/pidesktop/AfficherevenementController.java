@@ -59,8 +59,6 @@ public class AfficherevenementController implements Initializable {
     public static Evenement EvenementStatic;
     @FXML
     private TextField id_seach;
-    @FXML
-    private Button id_stat;
     
     
    
@@ -158,16 +156,13 @@ public class AfficherevenementController implements Initializable {
         try {
             
                 Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
-            
-            stageclose.close();
+                 stageclose.close();
                 Parent root=FXMLLoader.load(getClass().getResource("Ajoutevenement.fxml"));
-            Stage stage =new Stage();
-            
+                Stage stage =new Stage();
                 Scene scene = new Scene(root);
-            
-            
-            stage.setScene(scene);
-            stage.show();
+                stage.setScene(scene);
+                stage.setTitle("Ajout d'un evenement");
+                stage.show();
         } catch (IOException ex) {
                 Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -222,16 +217,13 @@ public class AfficherevenementController implements Initializable {
         try {
             
                 Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
-            
-            stageclose.close();
+                stageclose.close();
                 Parent root=FXMLLoader.load(getClass().getResource("AfficherParticipant.fxml"));
-            Stage stage =new Stage();
-            
+                Stage stage =new Stage();
                 Scene scene = new Scene(root);
-            
-            
-            stage.setScene(scene);
-            stage.show();
+                stage.setScene(scene);
+                stage.setTitle("Participants");
+                stage.show();
         } catch (IOException ex) {
                 Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -344,7 +336,25 @@ public boolean isNumeric(String str){
 
     @FXML
     private void search(ActionEvent event)  throws SQLException {
-        recherche=id_seach.getText();
+//        recherche=id_seach.getText();
+//        Evenement_service sr = new Evenement_service();
+//        if(recherche.isEmpty() )
+//        {affichertableau();
+//        }
+//        else{
+//                 List<Evenement> p=sr.Recherche(id_seach.getText());
+//                 id_listt.getItems().clear();
+//                 id_listt.getItems().removeAll(Evenement);
+//                 id_listt.getItems().addAll(p);
+//                 
+//        }
+        
+    }
+
+
+    @FXML
+    private void search(KeyEvent event) throws SQLException {
+          recherche=id_seach.getText();
         Evenement_service sr = new Evenement_service();
         if(recherche.isEmpty() )
         {affichertableau();
@@ -355,27 +365,6 @@ public boolean isNumeric(String str){
                  id_listt.getItems().removeAll(Evenement);
                  id_listt.getItems().addAll(p);
                  
-        }
-        
-    }
-
-    @FXML
-    private void gostat(ActionEvent event) {
-          try {
-            
-                Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
-            
-            stageclose.close();
-                Parent root=FXMLLoader.load(getClass().getResource("StatEvenement.fxml"));
-            Stage stage =new Stage();
-            
-                Scene scene = new Scene(root);
-            
-            
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-                Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

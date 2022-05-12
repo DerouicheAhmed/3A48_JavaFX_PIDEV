@@ -25,6 +25,7 @@ public class PIdesktop extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("afficherevenement.fxml")); 
         Scene scene = new Scene(root);
+        stage.setTitle("Evenement");
         stage.setScene(scene);
         stage.show();
         

@@ -43,6 +43,10 @@ import Entities.Evenement;
 import Entities.Participant;
 import Services.Evenement_service;
 import Services.Participant_service;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -71,6 +75,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import net.glxn.qrgen.QRCode;
+import net.glxn.qrgen.image.ImageType;
 
 /**
  * FXML Controller class
@@ -99,8 +105,6 @@ public class AfficherParticipantController implements Initializable {
     private TextField id_evenement;
     @FXML
     private TextField id_num;
-    @FXML
-    private ListView<Participant> id_list;
      ObservableList<Participant> Participant=FXCollections.observableArrayList();
     @FXML
     private Button id_button_evenement;
@@ -130,6 +134,8 @@ public class AfficherParticipantController implements Initializable {
     private TableColumn<Participant, String> colNum;
     @FXML
     private TableView<Participant> id_listt;
+    @FXML
+    private ImageView qr;
 
     /**
      * Initializes the controller class.
@@ -138,13 +144,58 @@ public class AfficherParticipantController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
          try {
             afficher();
+            /////////////////////////debut////////////////////////////
+            //affichertest();
+            
+            //////////////////////////fin///////////////////////////
             //afficherID();
             // TODO
         } catch (SQLException ex) {
             Logger.getLogger(AfficherevenementController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException ex) {
+            Logger.getLogger(AfficherevenementController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AfficherParticipantController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
-public void afficher() throws SQLException{
+         
+    }  
+ //////////////////////////debut///////////////////////////
+//    public void affichertest() throws SQLException{
+//        Participant_service sr = new Participant_service();
+//        
+//        ObservableList<Participant> list= FXCollections.observableArrayList(sr.Affichertout());
+//        
+//        colnomtest.setCellValueFactory(new PropertyValueFactory<Participant, String>("nom"));
+//       
+//       
+//        
+//        table_idd.setItems(list);
+//    }
+/////////////////////////fin////////////////////////////
+public void afficher() throws SQLException, FileNotFoundException, IOException{
+    
+    
+    
+    //
+        String details ="https://www.google.com/maps/place/"+AfficherevenementController.EvenementStatic.getDestination();
+         
+         ByteArrayOutputStream out = QRCode.from(details).to(ImageType.JPG).stream();
+         File file = new File("C:\\Users\\mahdi\\Documents\\NetBeansProjects\\PIdesktop\\src\\Images\\MyChannel.jpg");
+         FileOutputStream fos;
+
+         fos = new FileOutputStream(file);
+         fos.write(out.toByteArray());
+         fos.flush();
+
+// --> file:/C:/MyImages/myphoto.jpg
+         String localUrl = file.toURI().toURL().toString();
+
+         Image image = new Image(localUrl);
+
+         qr.setImage(image);
+    //
+    
+    
         Participant_service sr = new Participant_service();
         //Evenement=FXCollections.observableArrayList(sr.Affichertout());
         ObservableList<Participant> list= FXCollections.observableArrayList(sr.Affichertout());
@@ -159,26 +210,40 @@ public void afficher() throws SQLException{
     }
 
     @FXML
-     private void supprimer(ActionEvent event) throws SQLException {
-        Participant_service sr = new Participant_service();
-        Participant p = new Participant();
-        sr.Supprimer(p,id_listt.getSelectionModel().getSelectedItem().getId());
-        AlertDialog.showNotification("suppression","Le participant a été supprimer avec succés", AlertDialog.image_checked);
-        afficher();
+     private void supprimer(ActionEvent event) throws SQLException, IOException {
+         if(id_listt.hasProperties() ){
+            Participant_service sr = new Participant_service();
+            Participant p = new Participant();
+            sr.Supprimer(p,id_listt.getSelectionModel().getSelectedItem().getId());
+            AlertDialog.showNotification("suppression","Le participant a été supprimer avec succés", AlertDialog.image_checked);
+            afficher();
+        }else{
+             AlertDialog.showNotification("Attention","Veuillez selectionner un participant", AlertDialog.image_cross);
+        }
     }
 
     @FXML
-    private void modifier(ActionEvent event) throws SQLException {
-        if( verificationUserPhone && verificationUserPrenom && verificationUsernom){
-            Participant p = new Participant();
-            Participant_service sr = new Participant_service();
-                p.setNom(id_nom.getText());
-                p.setPrenom(id_prenom.getText());
-                p.setNumero_telephone(id_num.getText());
-                
-                sr.Modifier(p,id_listt.getSelectionModel().getSelectedItem().getId());
-                AlertDialog.showNotification("modification","La modification a été faite avec succés", AlertDialog.image_checked);
-                afficher();
+    private void modifier(ActionEvent event) throws SQLException, IOException {
+       //////////////////////////////////////////
+//        if(table_idd.hasProperties() ){
+//                int idd=table_idd.getSelectionModel().getSelectedItem().getId();
+//                System.out.println(idd);    
+//            }
+           //////////////////////////////////////////
+        if(id_listt.hasProperties() ){
+            if( verificationUserPhone && verificationUserPrenom && verificationUsernom){
+                Participant p = new Participant();
+                Participant_service sr = new Participant_service();
+                    p.setNom(id_nom.getText());
+                    p.setPrenom(id_prenom.getText());
+                    p.setNumero_telephone(id_num.getText());
+
+                    sr.Modifier(p,id_listt.getSelectionModel().getSelectedItem().getId());
+                    AlertDialog.showNotification("modification","La modification a été faite avec succés", AlertDialog.image_checked);
+                    afficher();
+            }
+        }else{
+             AlertDialog.showNotification("Attention","Veuillez selectionner un participant", AlertDialog.image_cross);
         }
     }
 
@@ -196,6 +261,7 @@ public void afficher() throws SQLException{
                          Stage stage =new Stage();
                          Scene scene = new Scene(root);
                          stage.setScene(scene);
+                         stage.setTitle("Ajout Participant");
                          stage.show();
                     } catch (IOException ex) {
                          Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
@@ -203,25 +269,18 @@ public void afficher() throws SQLException{
                 }
     }
 
-    @FXML
-    private void fill(MouseEvent event) {
-        
-    }
 
     @FXML
     private void GoToEvenement(ActionEvent event) {
          try {
             
-                Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
-            
+            Stage stageclose=(Stage) ((Node)event.getSource()).getScene().getWindow();
             stageclose.close();
-                Parent root=FXMLLoader.load(getClass().getResource("afficherevenement.fxml"));
+            Parent root=FXMLLoader.load(getClass().getResource("afficherevenement.fxml"));
             Stage stage =new Stage();
-            
-                Scene scene = new Scene(root);
-            
-            
+            Scene scene = new Scene(root);
             stage.setScene(scene);
+            stage.setTitle("Evenement");
             stage.show();
         } catch (IOException ex) {
                 Logger.getLogger(PIdesktop.class.getName()).log(Level.SEVERE, null, ex);
